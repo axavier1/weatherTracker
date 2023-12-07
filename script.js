@@ -1,13 +1,46 @@
 var apiKey = 'd4b59074949853bee923d87768fbc068';
 
+// Function to load search history from local storage
+function loadSearchHistory() {
+    // Get the search history from local storage
+    var searchHistory = localStorage.getItem('searchHistory');
+
+    // If there is search history, display it on the page
+    if (searchHistory) {
+        // Parse the search history from JSON to array
+        searchHistory = JSON.parse(searchHistory);
+
+        // Get the search history list element
+        var searchHistoryList = document.getElementById('searchHistoryList');
+
+        // Clear any existing search history
+        searchHistoryList.innerHTML = '';
+
+        // Loop through the search history and display each city
+        for (var i = 0; i < searchHistory.length; i++) {
+            var city = searchHistory[i];
+
+            // Create a new list item element
+            var listItem = document.createElement('li');
+            listItem.textContent = city;
+
+            // Append the list item to the search history list
+            searchHistoryList.appendChild(listItem);
+        }
+    }
+}
+
+// Call the loadSearchHistory function when the page loads
+loadSearchHistory();
+
 //Weather
 function currentWeather() {
     var enteredCity = document.querySelector("#searchCity").value;
     var currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${enteredCity}&appid=${apiKey}&units=imperial`;
+    
     fetch(currentWeatherURL)
     .then(res => res.json())
     .then(data => {
-
         if (Array.isArray(data.weather) && data.weather.length > 0) {
             var iconUrl = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
             document.getElementById('icon').src = iconUrl;
@@ -39,16 +72,10 @@ function futureWeather() {
                 document.querySelector(`#wind${i + 1}`).textContent = data.list[i * 8].wind.speed + " mph";
                 document.querySelector(`#hum${i + 1}`).textContent = data.list[i * 8].main.humidity + "%";
 
-                // Get the forecast date
+                // Get the forecast date from Dayjs
                 var forecastDate = data.list[i * 8].dt_txt;
-
-                    // Use Day.js to parse the date and get the day of the week index
                 var dayOfWeekIndex = dayjs(forecastDate).day();
-
-                    // Get the corresponding day of the week from the daysOfWeek array
                 var dayOfWeek = daysOfWeek[dayOfWeekIndex];
-
-                    // Append the day of the week to the corresponding h3 element
                 var h3 = document.querySelector(`#day${i + 1}`);
                 h3.textContent = dayOfWeek;
             }
