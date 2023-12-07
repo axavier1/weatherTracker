@@ -10,51 +10,62 @@
 </head>
 
 <body>
-    <main class="container">
+    <main class="container-fluid">
+        <header class="row navbar">
+            <div class="col-12 text-center">
+                <h1>Weather Dashboard</h1>
+            </div>
+        </header>
         <section class="row">
             <div class="col-3">
-                <input type="text">
-                <button>Search</button>
+                <input type="text" id="searchCity" class="form-control" placeholder="Enter City">
+                <button id="button">Get Weather</button>
             </div>
+            <!-- Current Weather -->
             <div class="col-9 border">
-                <h1>Oakland</h1>
+                <h2>Oakland</h2>
+                <img id="icon" src="" alt="Weather Icon">
                 <p id="temp">Temp</p>
                 <p id="wind">Wind</p>
                 <p id="hum">Humidity</p>
             </div>
         </section>
+        <!-- Forecast -->
         <section class="row">
-            <div class="col-3">
-
-            </div>
+            <div class="col-3"></div>
             <div class="col-9">
                 <div class="row">
                     <div class="col border">
-                        <h1>Oakland</h1>
+                        <h3>Oakland</h3>
+                        <img id="icon1" src="" alt="Weather Icon">
                         <p id="temp1">Temp</p>
                         <p id="wind1">Wind</p>
                         <p id="hum1">Humidity</p>
                     </div>
                     <div class="col border">
-                        <h1>Oakland</h1>
+                        <h3>Oakland</h3>
+                        <img id="icon2" src="" alt="Weather Icon">
                         <p id="temp2">Temp</p>
                         <p id="wind2">Wind</p>
                         <p id="hum2">Humidity</p>
                     </div>
                     <div class="col border">
-                        <h1>Oakland</h1>
+                        <h3>Oakland</h3>
+                        <img id="icon3" src="" alt="Weather Icon">
                         <p id="temp3">Temp</p>
                         <p id="wind3">Wind</p>
                         <p id="hum3">Humidity</p>
                     </div>
                     <div class="col border">
-                        <h1>Oakland</h1>
+                        <h3>Oakland</h3>
+                        <img id="icon4" src="" alt="Weather Icon">
                         <p id="temp4">Temp</p>
                         <p id="wind4">Wind</p>
                         <p id="hum4">Humidity</p>
                     </div>
                     <div class="col border">
-                        <h1>Oakland</h1>
+                        <h3>Oakland</h3>
+                        <img id="icon5" src="" alt="Weather Icon">
                         <p id="temp5">Temp</p>
                         <p id="wind5">Wind</p>
                         <p id="hum5">Humidity</p>
